@@ -1,0 +1,58 @@
+@import '../variables';
+
+.todo-list {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &_info {
+    border-bottom: 1px solid rgba($color, $alpha);
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 300;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0 10px 0;
+      border: 1px solid rgba($color, $alpha);
+      border-radius: 5px;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      input {
+        margin: 0;
+        padding: 0;
+      }
+
+      button {
+        border: 1px solid black;
+        color: black;
+        border-radius: 10px;
+        padding: 5px 10px;
+        background: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
