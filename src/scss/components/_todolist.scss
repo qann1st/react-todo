@@ -35,6 +35,12 @@
       border: 1px solid rgba($color, $alpha);
       border-radius: 5px;
 
+      p {
+        max-width: 70%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
       div {
         display: flex;
         align-items: center;

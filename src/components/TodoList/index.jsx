@@ -54,7 +54,7 @@ function TodoList() {
         <ul>
           {getFilteredTodos().map((todo, index) => (
             <TodoListItem
-              key={todo.name}
+              key={todo.index}
               {...todo}
               id={index}
               onCheck={handleCheck}
