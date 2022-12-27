@@ -1,6 +1,6 @@
 # ToDo List на React
 
-Ссылка на [https://qann1st.github.io/react-todo/](GitHub Pages)
+Ссылка на [GitHub Pages](https://qann1st.github.io/react-todo/)
 
 ### `npm start`
 
