@@ -1,0 +1,22 @@
+@import '../variables';
+@import './button';
+
+.new-todo {
+  max-width: 600px;
+  width: 100%;
+
+  .new--todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0 0;
+    padding: 10px 10px;
+    border: 1px solid rgba($color, $alpha);
+    border-radius: 5px;
+  }
+
+  button {
+    background-image: url(./../../assets/images/plus.png);
+    @include button;
+  }
+}

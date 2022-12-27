@@ -1,14 +1,16 @@
 import React from 'react';
 
-function TodoListItem() {
-  const [isChecked, setIsChecked] = React.useState(false);
-
+function TodoListItem({ name, isChecked, id, onCheck, onDelete }) {
   return (
     <li>
-      <p>Название ToDo</p>
+      <p className={isChecked ? 'checked' : ''}>{name}</p>
       <div>
-        <input type="checkbox" />
-        <button>Удалить</button>
+        <button
+          className={isChecked ? 'todo-not-ready' : 'todo-ready'}
+          value={isChecked}
+          type="checkbox"
+          onClick={() => onCheck(id)}></button>
+        <button className="todo-remove" onClick={() => onDelete(id)}></button>
       </div>
     </li>
   );
