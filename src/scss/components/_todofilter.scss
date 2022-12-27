@@ -1,0 +1,19 @@
+@import '../variables';
+
+.todo-filter {
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0;
+  padding: 15px 0 0;
+
+  button {
+    border: 1px solid rgba($color, $alpha);
+    border-radius: 15px;
+    background-color: transparent;
+    margin: 0;
+    padding: 8px 0;
+    width: 33%;
+  }
+}

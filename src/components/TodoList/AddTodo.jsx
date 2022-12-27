@@ -11,7 +11,7 @@ function AddTodo({ addTodo }) {
 
   return (
     <div className="new-todo">
-      <h1 className="header__title">Новая задача</h1>
+      <h1 className="todo-list__title">Новая задача</h1>
       <form className="new--todo" onSubmit={handleSubmit}>
         <input
           onChange={(e) => setValueInput(e.target.value)}

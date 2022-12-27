@@ -1,5 +1,6 @@
 import React from 'react';
 import AddTodo from './AddTodo';
+import TodoFilter from './TodoFilter';
 import TodoListItem from './TodoListItem';
 
 function TodoList() {
@@ -8,6 +9,8 @@ function TodoList() {
     { name: 'Приготовить', isChecked: false },
     { name: 'Спать', isChecked: false },
   ]);
+
+  const [filter, setFilter] = React.useState('all');
 
   function handleCheck(id) {
     setTodos(
@@ -28,15 +31,28 @@ function TodoList() {
     setTodos([...todos, { name, isChecked: false }]);
   }
 
+  function getFilteredTodos() {
+    if (filter === 'all') {
+      return todos;
+    }
+    if (filter === 'not-ready') {
+      return todos.filter((todo) => todo.isChecked);
+    }
+    if (filter === 'ready') {
+      return todos.filter((todo) => !todo.isChecked);
+    }
+  }
+
   return (
     <>
       <AddTodo addTodo={handleAddTodo} />
+      <TodoFilter setFilter={setFilter} />
       <div className="todo-list">
         <div className="todo-list_info">
           <h2 className="todo-list__title">Список ToDo</h2>
         </div>
         <ul>
-          {todos.map((todo, index) => (
+          {getFilteredTodos().map((todo, index) => (
             <TodoListItem
               key={todo.name}
               {...todo}
