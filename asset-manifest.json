@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/qann1st/react-todo/static/css/main.e3aee722.css",
+    "main.js": "/qann1st/react-todo/static/js/main.a1389008.js",
+    "index.html": "/qann1st/react-todo/index.html",
+    "main.e3aee722.css.map": "/qann1st/react-todo/static/css/main.e3aee722.css.map",
+    "main.a1389008.js.map": "/qann1st/react-todo/static/js/main.a1389008.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3aee722.css",
+    "static/js/main.a1389008.js"
+  ]
+}
