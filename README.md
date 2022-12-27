@@ -1,6 +1,28 @@
 # ToDo List на React
 
-Ссылка на [GitHub Pages](https://qann1st.github.io/react-todo/)
+## Описание: 
+
+
+
+## Функционал: 
+
+* Авторизация по одноразовому паролю
+* Смена аватара и никнейма профиля
+* Поиск по пользователям
+* Возможность отправить фото,голосовые и текстовые сообщения
+
+## Используемые технологии: 
+
+* ReactJS
+* HTML/CSS
+* TypeScript
+* WebPack
+* MaterialUI
+## Ссылки
+
+* Ссылка на [GitHub Pages](https://qann1st.github.io/react-todo/)
+
+## Сборка и разработка проекта
 
 ### `npm start`
 
