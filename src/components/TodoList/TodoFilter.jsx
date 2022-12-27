@@ -1,11 +1,19 @@
 import React from 'react';
 
-function TodoFilter({ setFilter }) {
+function TodoFilter({ filter, setFilter }) {
   return (
     <div className="todo-filter">
-      <button onClick={() => setFilter('ready')}>Выполненные</button>
-      <button onClick={() => setFilter('all')}>Все</button>
-      <button onClick={() => setFilter('not-ready')}>Невыполненные</button>
+      <button className={filter === 'ready' ? 'selected' : ''} onClick={() => setFilter('ready')}>
+        Выполненные
+      </button>
+      <button className={filter === 'all' ? 'selected' : ''} onClick={() => setFilter('all')}>
+        Все
+      </button>
+      <button
+        className={filter === 'not-ready' ? 'selected' : ''}
+        onClick={() => setFilter('not-ready')}>
+        Невыполненные
+      </button>
     </div>
   );
 }

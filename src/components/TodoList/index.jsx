@@ -35,10 +35,10 @@ function TodoList() {
     if (filter === 'all') {
       return todos;
     }
-    if (filter === 'not-ready') {
+    if (filter === 'ready') {
       return todos.filter((todo) => todo.isChecked);
     }
-    if (filter === 'ready') {
+    if (filter === 'not-ready') {
       return todos.filter((todo) => !todo.isChecked);
     }
   }
@@ -46,7 +46,7 @@ function TodoList() {
   return (
     <>
       <AddTodo addTodo={handleAddTodo} />
-      <TodoFilter setFilter={setFilter} />
+      <TodoFilter filter={filter} setFilter={setFilter} />
       <div className="todo-list">
         <div className="todo-list_info">
           <h2 className="todo-list__title">Список ToDo</h2>
