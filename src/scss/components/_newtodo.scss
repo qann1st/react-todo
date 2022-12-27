@@ -16,6 +16,16 @@
     border-radius: 5px;
   }
 
+  input {
+    border: none;
+    border-bottom: 1px solid rgba($color, $alpha);
+    padding-bottom: 3px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
   button {
     background-image: url(./../../assets/images/plus.png);
     @include button;
