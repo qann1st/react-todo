@@ -1,5 +1,6 @@
 import React from 'react';
 import AddTodo from './AddTodo';
+import SearchTodo from './SearchTodo';
 import TodoFilter from './TodoFilter';
 import TodoListItem from './TodoListItem';
 
@@ -11,6 +12,10 @@ function TodoList() {
   ]);
 
   const [filter, setFilter] = React.useState('all');
+
+  const [valueInput, setValueInput] = React.useState('');
+
+  console.log(valueInput);
 
   function handleCheck(id) {
     setTodos(
@@ -43,24 +48,43 @@ function TodoList() {
     }
   }
 
+  function getSearchTodos() {
+    if (valueInput === '') {
+      return todos;
+    } else if (valueInput !== '') {
+      return todos.filter((todo) => valueInput === todo.name);
+    }
+  }
+
   return (
     <>
       <AddTodo addTodo={handleAddTodo} />
+      <SearchTodo setValueInput={setValueInput} />
       <TodoFilter filter={filter} setFilter={setFilter} />
       <div className="todo-list">
         <div className="todo-list_info">
           <h2 className="todo-list__title">Список ToDo</h2>
         </div>
-        <ul>
-          {getFilteredTodos().map((todo, index) => (
-            <TodoListItem
-              key={todo.index}
-              {...todo}
-              id={index}
-              onCheck={handleCheck}
-              onDelete={handleDelete}
-            />
-          ))}
+        <ul className="todo-list_list">
+          {valueInput === ''
+            ? getFilteredTodos().map((todo, index) => (
+                <TodoListItem
+                  key={index}
+                  {...todo}
+                  id={index}
+                  onCheck={handleCheck}
+                  onDelete={handleDelete}
+                />
+              ))
+            : getSearchTodos().map((todo, index) => (
+                <TodoListItem
+                  key={index}
+                  {...todo}
+                  id={index}
+                  onCheck={handleCheck}
+                  onDelete={handleDelete}
+                />
+              ))}
         </ul>
       </div>
     </>

@@ -18,7 +18,7 @@
     font-weight: 300;
   }
 
-  ul {
+  &_list {
     list-style: none;
     padding: 0;
     margin: 10px 0 0;
@@ -26,7 +26,7 @@
     flex-direction: column;
     gap: 5px;
 
-    li {
+    &_element {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -41,31 +41,24 @@
         overflow: hidden;
       }
 
-      div {
+      &-nav {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 5px;
       }
 
-      input {
-        margin: 0;
-        padding: 0;
-        width: 16px;
-        height: 16px;
-      }
-
-      .todo-ready {
+      &-completed {
         background-image: url(./../../assets/images/galochka.png);
         @include button;
       }
 
-      .todo-not-ready {
+      &-not-completed {
         background-image: url(./../../assets/images/krestik.png);
         @include button;
       }
 
-      .todo-remove {
+      &-remove {
         background-image: url(./../../assets/images/trash.png);
         @include button;
       }

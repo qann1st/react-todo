@@ -1,7 +1,4 @@
-@import '../variables';
-@import './button';
-
-.new-todo {
+.todo-search {
   max-width: 600px;
   width: 100%;
   text-align: center;
@@ -20,14 +17,10 @@
     border: none;
     border-bottom: 1px solid rgba($color, $alpha);
     padding-bottom: 3px;
+    width: 100%;
   }
 
   &_input:focus {
     outline: none;
-  }
-
-  &_button {
-    background-image: url(./../../assets/images/plus.png);
-    @include button;
   }
 }
