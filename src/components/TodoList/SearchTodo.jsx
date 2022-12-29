@@ -9,7 +9,7 @@ function SearchTodo({ setValueInput }) {
 
   return (
     <div className="todo-search">
-      <h1 className="todo-list__title">Поиск ToDo</h1>
+      <h2 className="todo-list__title">Поиск ToDo</h2>
       <form className="new-todo_form" onSubmit={handleSubmit}>
         <input
           className="todo-search_input"
