@@ -44,9 +44,9 @@ function TodoList() {
 
   function getSearchTodos() {
     if (valueInput === '') {
-      return todos;
-    } else if (valueInput !== '') {
-      return todos.filter((todo) => valueInput === todo.name);
+      return getFilteredTodos();
+    } else {
+      return getFilteredTodos().filter((todo) => new RegExp(valueInput, 'i').test(todo.name));
     }
   }
 
@@ -69,6 +69,8 @@ function TodoList() {
     });
   }
 
+  const searchTodos = getSearchTodos();
+
   return (
     <>
       <AddTodo addTodo={handleAddTodo} />
@@ -79,32 +81,19 @@ function TodoList() {
           <h2 className="todo-list__title">Список ToDo</h2>
         </div>
         <ul className="todo-list_list">
-          {todos.length !== 0 ? (
-            valueInput === '' ? (
-              getFilteredTodos().map((todo) => (
-                <TodoListItem
-                  key={todo.id}
-                  todo={todo}
-                  onCheck={handleCheck}
-                  onDelete={handleDelete}
-                  onDragStart={handleDragStart}
-                  onDrop={handleDrop}
-                />
-              ))
-            ) : (
-              getSearchTodos().map((todo) => (
-                <TodoListItem
-                  key={todo.id}
-                  todo={todo}
-                  onCheck={handleCheck}
-                  onDelete={handleDelete}
-                  onDragStart={handleDragStart}
-                  onDrop={handleDrop}
-                />
-              ))
-            )
+          {searchTodos.length !== 0 ? (
+            searchTodos.map((todo) => (
+              <TodoListItem
+                key={todo.id}
+                todo={todo}
+                onCheck={handleCheck}
+                onDelete={handleDelete}
+                onDragStart={handleDragStart}
+                onDrop={handleDrop}
+              />
+            ))
           ) : (
-            <p>Пока задач нет</p>
+            <p>{valueInput !== '' ? 'Таких ToDo нет' : 'Пока задач нет'}</p>
           )}
         </ul>
       </div>
