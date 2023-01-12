@@ -59,7 +59,7 @@ function TodoList() {
     if (valueInput === '') {
       return getFilteredTodos();
     } else {
-      return getFilteredTodos().filter((todo) => new RegExp(valueInput, 'i').test(todo.name));
+      return getFilteredTodos().filter((todo) => new RegExp(valueInput, 'ig').test(todo.name));
     }
   }
 
@@ -87,7 +87,7 @@ function TodoList() {
   return (
     <>
       <AddTodo addTodo={handleAddTodo} />
-      <SearchTodo setValueInput={setValueInput} />
+      <SearchTodo setValueInput={setValueInput} valueInput={valueInput} />
       <TodoFilter filter={filter} setFilter={setFilter} />
       <div className="todo-list">
         <div className="todo-list_info">

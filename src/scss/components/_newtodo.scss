@@ -19,6 +19,7 @@
     border: none;
     border-bottom: 1px solid rgba($color, $alpha);
     padding-bottom: 3px;
+    flex: 1;
   }
 
   &_input:focus {
@@ -26,7 +27,8 @@
   }
 
   &_button {
-    background-image: url(./../../assets/images/plus.png);
     @include button;
+    background-image: url(./../../assets/images/plus.png);
+    margin-left: 10px;
   }
 }

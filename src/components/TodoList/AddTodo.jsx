@@ -14,7 +14,9 @@ function AddTodo({ addTodo }) {
       <h2 className="todo-list__title">Добавить ToDo</h2>
       <form className="new-todo_form" onSubmit={handleSubmit}>
         <input
-          onChange={(e) => setValueInput(e.target.value)}
+          onChange={(e) => {
+            setValueInput(...e.target.value.matchAll(/[A-Za-zА-Яа-яЁё0-9.!?:;]*/g));
+          }}
           className="new-todo_input"
           value={valueInput}
           type="text"

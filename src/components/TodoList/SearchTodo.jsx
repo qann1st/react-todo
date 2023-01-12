@@ -1,21 +1,18 @@
 import React from 'react';
 
-function SearchTodo({ setValueInput }) {
-  function handleSubmit(e) {
-    e.preventDefault();
-    setValueInput('');
-    setValueInput(e.target.value);
-  }
-
+function SearchTodo({ valueInput, setValueInput }) {
   return (
     <div className="todo-search">
       <h2 className="todo-list__title">Поиск ToDo</h2>
-      <form className="new-todo_form" onSubmit={handleSubmit}>
+      <form className="new-todo_form" onSubmit={(e) => e.preventDefault()}>
         <input
           className="todo-search_input"
           type="text"
           placeholder="Что хотите найти?"
-          onChange={(e) => setValueInput(e.target.value)}
+          value={valueInput}
+          onChange={(e) => {
+            setValueInput(...e.target.value.matchAll(/[A-Za-zА-Яа-яЁё0-9.]*/g));
+          }}
           required
         />
       </form>
