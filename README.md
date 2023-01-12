@@ -2,7 +2,7 @@
 
 ## Описание:
 
-![Снимок экрана от 2022-12-27 17-28-35](https://user-images.githubusercontent.com/107764041/209680846-561e48bb-e038-498f-9485-292defc98621.png)
+![Снимок экрана от 2023-01-12 17-27-12](https://user-images.githubusercontent.com/107764041/212092762-b2f1b3fa-b0f6-43ac-b85d-578b09ef28ed.png)
 
 ## Функционал:
 
