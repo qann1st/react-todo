@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'react-uuid';
 import AddTodo from './AddTodo';
 import SearchTodo from './SearchTodo';
 import TodoFilter from './TodoFilter';
@@ -11,9 +10,14 @@ function TodoList() {
   const [filter, setFilter] = React.useState('all');
   const [valueInput, setValueInput] = React.useState('');
   const [currentTodo, setCurrentTodo] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    api.getTodos().then((arr) => setTodos(arr.reverse()));
+    setIsLoading(true);
+    api
+      .getTodos()
+      .then((arr) => setTodos(arr.reverse()))
+      .finally(() => setIsLoading(false));
   }, []);
 
   function handleCheck(todo) {
@@ -90,7 +94,9 @@ function TodoList() {
           <h2 className="todo-list__title">Список ToDo</h2>
         </div>
         <ul className="todo-list_list">
-          {searchTodos.length !== 0 ? (
+          {isLoading ? (
+            <p>Загрузка...</p>
+          ) : searchTodos.length !== 0 ? (
             searchTodos.map((todo) => (
               <TodoListItem
                 key={todo.id}
