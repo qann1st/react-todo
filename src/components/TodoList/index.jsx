@@ -4,6 +4,7 @@ import AddTodo from './AddTodo';
 import SearchTodo from './SearchTodo';
 import TodoFilter from './TodoFilter';
 import TodoListItem from './TodoListItem';
+import { api } from '../../utils/Api';
 
 function TodoList() {
   const [todos, setTodos] = React.useState([]);
@@ -11,23 +12,31 @@ function TodoList() {
   const [valueInput, setValueInput] = React.useState('');
   const [currentTodo, setCurrentTodo] = React.useState(null);
 
-  function handleCheck(id) {
-    setTodos(
-      todos.map((todo) => {
-        if (id === todo.id) {
-          return { ...todo, isChecked: !todo.isChecked };
-        }
-        return todo;
-      }),
+  React.useEffect(() => {
+    api.getTodos().then((arr) => setTodos(arr.reverse()));
+  }, []);
+
+  function handleCheck(todo) {
+    api.toggleChecked(todo).then((newTodo) =>
+      setTodos(
+        todos.map((todo) => {
+          if (newTodo.id === todo.id) {
+            return newTodo;
+          }
+          return todo;
+        }),
+      ),
     );
   }
 
-  function handleDelete(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  function handleDelete(todo) {
+    api
+      .removeTodo(todo)
+      .then((removedTodo) => setTodos(todos.filter((element) => removedTodo.id !== element.id)));
   }
 
   function handleAddTodo(name) {
-    setTodos([...todos, { name, id: uuid(), isChecked: false }]);
+    api.addTodo({ name, isChecked: false }).then((todo) => setTodos([todo, ...todos]));
   }
 
   function getFilteredTodos() {

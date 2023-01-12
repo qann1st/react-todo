@@ -31,10 +31,10 @@ function TodoListItem({ todo, onCheck, onDelete, onDragStart, onDrop }) {
           }
           value={todo.isChecked}
           type="checkbox"
-          onClick={() => onCheck(todo.id)}></button>
+          onClick={() => onCheck(todo)}></button>
         <button
           className="todo-list_list_element-remove"
-          onClick={() => onDelete(todo.id)}></button>
+          onClick={() => onDelete(todo)}></button>
       </div>
     </li>
   );
