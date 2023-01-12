@@ -3,7 +3,7 @@ import React from 'react';
 function TodoFilter({ filter, setFilter }) {
   return (
     <div className="todo-filter">
-      <h2 className="todo-list__title">Фильтрация ToDo</h2>
+      <h2 className="title">Фильтрация ToDo</h2>
       <div className="todo-filter__buttons">
         <button className={filter === 'ready' ? 'selected' : ''} onClick={() => setFilter('ready')}>
           Выполненные

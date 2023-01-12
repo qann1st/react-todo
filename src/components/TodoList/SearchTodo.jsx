@@ -3,7 +3,7 @@ import React from 'react';
 function SearchTodo({ valueInput, setValueInput }) {
   return (
     <div className="todo-search">
-      <h2 className="todo-list__title">Поиск ToDo</h2>
+      <h2 className="title">Поиск ToDo</h2>
       <form className="new-todo_form" onSubmit={(e) => e.preventDefault()}>
         <input
           className="todo-search_input"
