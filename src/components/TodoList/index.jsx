@@ -1,26 +1,20 @@
 import React from 'react';
+import uuid from 'react-uuid';
 import AddTodo from './AddTodo';
 import SearchTodo from './SearchTodo';
 import TodoFilter from './TodoFilter';
 import TodoListItem from './TodoListItem';
 
 function TodoList() {
-  const [todos, setTodos] = React.useState([
-    { name: 'Убраться', isChecked: false },
-    { name: 'Приготовить', isChecked: false },
-    { name: 'Спать', isChecked: false },
-  ]);
-
+  const [todos, setTodos] = React.useState([]);
   const [filter, setFilter] = React.useState('all');
-
   const [valueInput, setValueInput] = React.useState('');
-
-  console.log(valueInput);
+  const [currentTodo, setCurrentTodo] = React.useState(null);
 
   function handleCheck(id) {
     setTodos(
-      todos.map((todo, index) => {
-        if (index === id) {
+      todos.map((todo) => {
+        if (id === todo.id) {
           return { ...todo, isChecked: !todo.isChecked };
         }
         return todo;
@@ -29,11 +23,11 @@ function TodoList() {
   }
 
   function handleDelete(id) {
-    setTodos(todos.filter((_, index) => index !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   function handleAddTodo(name) {
-    setTodos([...todos, { name, isChecked: false }]);
+    setTodos([...todos, { name, id: uuid(), isChecked: false }]);
   }
 
   function getFilteredTodos() {
@@ -56,6 +50,25 @@ function TodoList() {
     }
   }
 
+  function handleDragStart(todo) {
+    setCurrentTodo(todo);
+  }
+
+  function handleDrop(isTop, todo) {
+    const newTodos = todos.filter((e) => e.id !== currentTodo.id);
+    newTodos.some((e, index) => {
+      if (e.id === todo.id) {
+        setTodos([
+          ...newTodos.slice(0, index + isTop),
+          currentTodo,
+          ...newTodos.slice(index + isTop, newTodos.length),
+        ]);
+        return true;
+      }
+      return false;
+    });
+  }
+
   return (
     <>
       <AddTodo addTodo={handleAddTodo} />
@@ -66,25 +79,33 @@ function TodoList() {
           <h2 className="todo-list__title">Список ToDo</h2>
         </div>
         <ul className="todo-list_list">
-          {valueInput === ''
-            ? getFilteredTodos().map((todo, index) => (
+          {todos.length !== 0 ? (
+            valueInput === '' ? (
+              getFilteredTodos().map((todo) => (
                 <TodoListItem
-                  key={index}
-                  {...todo}
-                  id={index}
+                  key={todo.id}
+                  todo={todo}
                   onCheck={handleCheck}
                   onDelete={handleDelete}
+                  onDragStart={handleDragStart}
+                  onDrop={handleDrop}
                 />
               ))
-            : getSearchTodos().map((todo, index) => (
+            ) : (
+              getSearchTodos().map((todo) => (
                 <TodoListItem
-                  key={index}
-                  {...todo}
-                  id={index}
+                  key={todo.id}
+                  todo={todo}
                   onCheck={handleCheck}
                   onDelete={handleDelete}
+                  onDragStart={handleDragStart}
+                  onDrop={handleDrop}
                 />
-              ))}
+              ))
+            )
+          ) : (
+            <p>Пока задач нет</p>
+          )}
         </ul>
       </div>
     </>
