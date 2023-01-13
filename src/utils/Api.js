@@ -30,6 +30,10 @@ class Api {
     return this._fetch(`/TodoList/${todo.id}`, 'DELETE');
   }
 
+  editTodo(todo) {
+    return this._fetch(`/TodoList/${todo.id}`, 'PUT', { name: todo.name });
+  }
+
   toggleChecked(todo) {
     return this._fetch(`/TodoList/${todo.id}`, 'PUT', { isChecked: !todo.isChecked });
   }

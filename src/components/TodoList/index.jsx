@@ -33,6 +33,20 @@ function TodoList() {
     );
   }
 
+  function handleEditTodo(todo, value) {
+    todo.name[0] = value;
+    api.editTodo(todo).then((newTodo) =>
+      setTodos(
+        todos.map((todo) => {
+          if (newTodo.id === todo.id) {
+            return newTodo;
+          }
+          return todo;
+        }),
+      ),
+    );
+  }
+
   function handleDelete(todo) {
     api
       .removeTodo(todo)
@@ -105,6 +119,7 @@ function TodoList() {
                 onDelete={handleDelete}
                 onDragStart={handleDragStart}
                 onDrop={handleDrop}
+                onEditTodo={handleEditTodo}
               />
             ))
           ) : (

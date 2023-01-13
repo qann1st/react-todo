@@ -44,6 +44,20 @@
         gap: 5px;
       }
 
+      &_edit {
+        background-image: url(./../../assets/images/edit.png);
+        @include button;
+      }
+
+      &_input {
+        margin: 16px 0 15px 0;
+        padding: 0;
+        outline: none;
+        border: none;
+        height: 19px;
+        border-bottom: 1px solid rgba($color, $alpha);
+      }
+
       &-completed {
         background-image: url(./../../assets/images/galochka.png);
         @include button;
