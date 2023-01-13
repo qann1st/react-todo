@@ -13,6 +13,7 @@
 
 - ReactJS
 - SCSS
+- REST API
 - Flex
 
 ## Ссылки
