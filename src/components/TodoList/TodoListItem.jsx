@@ -43,10 +43,13 @@ function TodoListItem({ todo, onCheck, onDelete, onDragStart, onDrop, onEditTodo
       )}
       <div className="todo-list_list_element-nav">
         <button
-          className="todo-list_list_element_edit"
-          onClick={() => {
+          className={
+            btnEditIsOpened ? 'todo-list_list_element_save' : 'todo-list_list_element_edit'
+          }
+          onClick={(e) => {
             setInputValue(todo.name);
             setBtnEditIsOpened(!btnEditIsOpened);
+            btnEditIsOpened & (inputValue !== todo.name) && handleSubmit(e);
           }}></button>
         <button
           className={

@@ -49,6 +49,11 @@
         @include button;
       }
 
+      &_save {
+        background-image: url(./../../assets/images/save.png);
+        @include button;
+      }
+
       &_input {
         margin: 16px 0 15px 0;
         padding: 0;
