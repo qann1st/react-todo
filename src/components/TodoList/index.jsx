@@ -91,7 +91,7 @@ function TodoList() {
       <TodoFilter filter={filter} setFilter={setFilter} />
       <div className="todo-list">
         <div className="todo-list_info">
-          <h2 className="title">Список ToDo</h2>
+          <h2 className="title">Список задач</h2>
         </div>
         <ul className="todo-list_list">
           {isLoading ? (

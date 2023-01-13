@@ -15,12 +15,12 @@
     width: 33%;
     cursor: pointer;
     &:first-of-type {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
     }
     &:last-of-type {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
     }
   }
 
