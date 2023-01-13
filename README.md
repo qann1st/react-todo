@@ -24,8 +24,10 @@
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Запускает режим разработки.\
+Откройте [http://localhost:3000](http://localhost:3000) для просмотра приложения в браузере.\
+Перезагрузка происходит автоматически, при сохранении.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run build`
+
+Запуск сборки проекта в production режиме, проект будет собран в папку `build`.
