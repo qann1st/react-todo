@@ -16,8 +16,12 @@ function TodoList() {
     setIsLoading(true);
     api
       .getTodos()
-      .then((arr) => setTodos(arr.reverse()))
-      .finally(() => setIsLoading(false));
+      .then((arr) => {
+        setTodos(arr.reverse());
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   function handleCheck(todo) {
